@@ -1,1 +1,152 @@
-<h1>Sales!</h1>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css" />
+    <title>Sales Landing Page</title>
+    <script src="https://kit.fontawesome.com/6d42b9e43a.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <section class="landing">
+      <!-- Back to top button -->
+      <button id="backToTop" onclick="scrollToTop()">Back to Top</button>
+
+      <!-- navigation menu -->
+      <nav class="navbar">
+        <div class="logo">
+          <h1 style="color: #000000">Logo</h1>
+        </div>
+        <ul class="nav-items">
+          <li class="nav-item">
+            <a href="#" class="nav-link">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="#contact" class="nav-link">Contact us</a>
+          </li>
+          <li class="nav-item">
+            <a href="#about" class="nav-link">About</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="desc-container">
+        <h1 style="color: #ffffff; text-align: center; font-size: 50px">
+          Sales Management Tool
+        </h1>
+        <p style="color: #f2f2f2; text-align: center; font-size: 25px">
+          Optimize your sales process with our web-based sales management tool.
+          Track leads, manage customer interactions, and boost conversions
+          effortlessly with real-time analytics and reporting
+        </p>
+      </div>
+    </section>
+
+    <section class="features" id="features">
+      <div class="roadmap">
+        <h2>Product Roadmap</h2>
+        <div class="roadmap-container">
+          <div class="roadmap-item">
+            <img src="https://picsum.photos/300/300" alt="Lead Tracking" />
+            <div class="roadmap-content">
+              <h3>Lead Tracking and Management</h3>
+              <p>
+                Easily track and manage leads through the sales pipeline with
+                automated notifications and detailed analytics.
+              </p>
+            </div>
+          </div>
+          <div class="roadmap-item">
+            <img
+              src="https://picsum.photos/320/320"
+              alt="Customer Interaction"
+            />
+            <div class="roadmap-content">
+              <h3>Customer Interaction Management</h3>
+              <p>
+                Maintain a comprehensive log of all customer interactions,
+                including emails, calls, and meetings, to ensure seamless
+                communication and follow-ups.
+              </p>
+            </div>
+          </div>
+          <div class="roadmap-item">
+            <img src="https://picsum.photos/350/350" alt="Real-time Analytics" />
+            <div class="roadmap-content">
+              <h3>Real-time Analytics and Reporting</h3>
+              <p>
+                Access real-time data on sales performance, trends, and
+                forecasts to make informed decisions and improve sales
+                strategies.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+      
+    <!-- Contact section -->
+    <section class="contact" id="contact">
+      <form class="contact-form">
+        <h4>Have a question for us?</h4>
+
+        <!-- First name -->
+        <div class="input-div">
+          <label for="first-name">First name:</label>
+          <input required type="text" name="first-name" id="first-name" />
+        </div>
+
+        <!-- Last name -->
+        <div class="input-div">
+          <label for="last-name">last name:</label>
+          <input required type="text" name="last-name" id="last-name" />
+        </div>
+
+        <!-- Email -->
+        <div class="input-div">
+          <label for="email">Email:</label>
+          <input required type="email" name="email" id="email" />
+        </div>
+
+        <!-- Message -->
+        <div class="input-div">
+          <label for="message">message:</label>
+          <textarea
+            required
+            type="message"
+            name="message"
+            id="message"
+          ></textarea>
+        </div>
+
+        <div class="input-div">
+          <input required type="submit" class="submit-btn" value="Contact us" />
+        </div>
+      </form>
+    </section>
+
+    <!-- About section -->
+    <section class="about" id="about">
+        <div class="about-container">
+          <div class="about-content">
+            <h2>About Us</h2>
+            <p>This project was inspired by the need to streamline sales processes and improve efficiency for businesses of all sizes. Our goal is to provide a comprehensive tool that empowers sales teams to achieve their best performance.</p>
+            <p>Connect with us on social media to stay updated on our latest features and news:</p>
+            <div class="social-links">
+              <a href="https://twitter.com/yourprofile" target="_blank">
+                <i class="fa-brands fa-x-twitter"></i>
+              </a>
+              <a href="https://facebook.com/yourprofile" target="_blank">
+                <i class="fa-brands fa-facebook"></i>
+              </a>
+              <a href="https://linkedin.com/in/yourprofile" target="_blank">
+                <i class="fa-brands fa-linkedin"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    <!-- Scroll function -->
+    <script src="./index.js"></script>
+  </body>
+</html>
