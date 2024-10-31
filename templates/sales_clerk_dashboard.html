@@ -1,0 +1,24 @@
+<!-- templates/sales_clerk_dashboard.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Clerk Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Sales Clerk Dashboard</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'change_password' %}">Change Password</a></li>
+                <li><a href="{% url 'admin_dashboard' %}">Admin Dashboard</a></li>
+                <li><a href="{% url 'manager_dashboard' %}">Manager Dashboard</a></li>
+            </ul>
+        </nav>
+        <h2>Sales Overview</h2>
+        <p>Overview of sales data or tasks for the clerk.</p>
+    </div>
+</body>
+</html>

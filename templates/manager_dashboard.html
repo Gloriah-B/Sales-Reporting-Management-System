@@ -1,0 +1,24 @@
+<!-- templates/manager_dashboard.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manager Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Manager Dashboard</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'change_password' %}">Change Password</a></li>
+                <li><a href="{% url 'admin_dashboard' %}">Admin Dashboard</a></li>
+                <li><a href="{% url 'sales_clerk_dashboard' %}">Sales Clerk Dashboard</a></li>
+            </ul>
+        </nav>
+        <h2>Tasks</h2>
+        <p>List of tasks or reports for the manager.</p>
+    </div>
+</body>
+</html>

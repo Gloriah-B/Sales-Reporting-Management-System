@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+
+{% block title %}Sales Dashboard - Sales Reporting System{% endblock %}
+
+{% load static %}
+
+{% block content %}
+    <div class="container">
+        <h2>Sales Dashboard</h2>
+        <canvas id="salesChart" width="400" height="200"></canvas>
+        
+        <table id="sales-dashboard" class="dashboard-table">
+            <thead>
+                <tr>
+                    <th>Sales Figures</th>
+                    <th>Region</th>
+                    <th>Products Sold</th>
+                    <th>Date Submitted</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for report in reports %}
+                <tr>
+                    <td>{{ report.sales_figures }}</td>
+                    <td>{{ report.region }}</td>
+                    <td>{{ report.products }}</td>
+                    <td>{{ report.created_at|date:"Y-m-d H:i" }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4">No sales reports available.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+
+{% block extra_styles %}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa; /* Light background */
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white; /* White background for the container */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Box shadow for depth */
+        }
+
+        h2 {
+            text-align: center; /* Center the heading */
+            color: #333; /* Darker heading color */
+            margin-bottom: 20px; /* Space below heading */
+        }
+
+        .dashboard-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .dashboard-table th, .dashboard-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .dashboard-table th {
+            background-color: #007bff; /* Primary color for header */
+            color: white;
+        }
+
+        .dashboard-table tr:nth-child(even) {
+            background-color: #f2f2f2; /* Light gray for alternate rows */
+        }
+
+        .dashboard-table tr:hover {
+            background-color: #e2e6ea; /* Slightly darker on hover */
+        }
+    </style>
+{% endblock %}
+
+{% block extra_scripts %}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const salesChartData = {
+            labels: ['North', 'South', 'East', 'West'], // Static regions
+            datasets: [{
+                label: 'Sales Figures',
+                data: [1200, 1900, 3000, 2500], // Static sales figures
+                backgroundColor: 'rgba(75, 192, 192, 0.6)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        };
+
+        const salesChartConfig = {
+            type: 'bar',
+            data: salesChartData,
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Sales Figures'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Regions'
+                        }
+                    }
+                }
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const ctx = document.getElementById('salesChart').getContext('2d');
+            const salesChart = new Chart(ctx, salesChartConfig);
+            console.log("Sales Dashboard loaded successfully.");
+        });
+    </script>
+{% endblock %}

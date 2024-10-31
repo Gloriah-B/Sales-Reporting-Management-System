@@ -1,0 +1,175 @@
+{% extends 'base.html' %}
+
+{% block title %}Sales Reporting Form{% endblock %}
+
+{% load static %}
+
+{% block content %}
+    <div class="full-page">
+        <div class="container">
+            <h2>Welcome to the Sales Reporting System</h2>
+            <p>Please fill in the daily sales report below:</p>
+            
+            <form id="reportingForm" method="POST" action="{% url 'submit_report' %}">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="salesFigures">Sales Figures</label>
+                    <input type="number" id="salesFigures" name="salesFigures" placeholder="Enter total sales" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="region">Region</label>
+                    <select id="region" name="region" required>
+                        <option value="">Select Region</option>
+                        <option value="North">North</option>
+                        <option value="South">South</option>
+                        <option value="East">East</option>
+                        <option value="West">West</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="products">Products Sold</label>
+                    <select id="products" name="products" required>
+                        <option value="">Select Products Sold</option>
+                        <option value="Mangoes">Mangoes</option>
+                        <option value="Avocado">Avocado</option>
+                        <option value="Apples">Apples</option>
+                        <option value="Bananas">Bananas</option>
+                        <option value="Melon">Melon</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="submit-button">Submit Report</button>
+                <div id="error-message" class="error"></div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extra_styles %}
+    <style>
+        /* Full-page layout */
+        .full-page {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #72EDF2 10%, #5151E5 100%);
+            color: white;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        .container {
+            max-width: 500px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            animation: fadeInUp 1s ease-out; /* Smooth fade-in animation */
+        }
+
+        h2 {
+            font-size: 2em;
+            margin-bottom: 10px;
+            color: #5151E5;
+        }
+
+        p {
+            font-size: 1.1em;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #5151E5;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            transition: transform 0.3s ease;
+        }
+
+        input:focus, select:focus {
+            border-color: #5151E5;
+            transform: scale(1.02); /* Slightly enlarges on focus */
+            outline: none;
+        }
+
+        .submit-button {
+            display: inline-block;
+            background-color: #5151E5;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            width: 100%;
+        }
+
+        .submit-button:hover {
+            background-color: #2D2DA4;
+            transform: scale(1.05); /* Slight enlargement on hover */
+        }
+
+        .error {
+            color: red;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+
+        /* Keyframe animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+{% endblock %}
+
+{% block extra_scripts %}
+    <script>
+        // Smooth client-side form validation
+        document.getElementById('reportingForm').onsubmit = function(event) {
+            const salesFigures = document.getElementById('salesFigures').value;
+            const region = document.getElementById('region').value;
+            const products = document.getElementById('products').value;
+
+            if (!salesFigures || !region || !products) {
+                event.preventDefault();
+                document.getElementById('error-message').innerText = "Please fill in all fields.";
+                document.getElementById('error-message').classList.add("shake-animation");
+            }
+        };
+    </script>
+{% endblock %}
